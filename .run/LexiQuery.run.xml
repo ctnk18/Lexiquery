@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="LexiQuery" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.project.lexiquery.LexiQueryApplication" />
+    <module name="lexiquery" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <envs>
+      <!-- Demo values for local use only. Change MySQL ports/passwords here if yours differ. -->
+      <env name="APP_ADMIN_PASSWORD" value="ChangeMe#123" />
+      <env name="APP_DB_PASSWORD" value="app_pass_change_me" />
+      <env name="TARGET_DB_PASSWORD" value="ro_pass_change_me" />
+      <env name="LLM_ENABLED" value="false" />
+      <env name="ML_ENABLED" value="false" />
+    </envs>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
