@@ -1,0 +1,9 @@
+<footer class="site-footer">
+  <div class="inner">
+    <span>LexiQuery &middot; ask in plain English, with every query checked before it runs</span>
+    <span>Spring Boot &middot; JSP &middot; MySQL</span>
+  </div>
+</footer>
+<c:if test="${not empty pageContext.request.remoteUser}"><script src="<c:url value='/js/app.js'/>" defer></script></c:if>
+</body>
+</html>

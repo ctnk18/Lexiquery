@@ -1,0 +1,38 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LexiQuery</title>
+  <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="<c:url value='/query'/>"><span class="brand-mark"></span>LexiQuery</a>
+    <c:if test="${not empty pageContext.request.remoteUser}">
+      <nav class="main-nav" aria-label="Main">
+        <a href="<c:url value='/query'/>" class="${active == 'query' ? 'active' : ''}">Query</a>
+        <a href="<c:url value='/history'/>" class="${active == 'history' ? 'active' : ''}">History</a>
+        <c:if test="${pageContext.request.isUserInRole('ADMIN')}"><a href="<c:url value='/admin'/>" class="${active == 'admin' ? 'active' : ''}">Admin</a></c:if>
+      </nav>
+      <span class="header-spacer"></span>
+      <div class="account">
+        <span class="role-tag">
+          <c:choose>
+            <c:when test="${pageContext.request.isUserInRole('ADMIN')}">Admin</c:when>
+            <c:when test="${pageContext.request.isUserInRole('ANALYST')}">Analyst</c:when>
+            <c:otherwise>Viewer</c:otherwise>
+          </c:choose>
+        </span>
+        <span class="name"><c:out value="${pageContext.request.remoteUser}"/></span>
+        <form action="<c:url value='/logout'/>" method="post" class="inline">
+          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+          <button class="link-btn" type="submit">Log out</button>
+        </form>
+      </div>
+    </c:if>
+  </div>
+</header>

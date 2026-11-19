@@ -1,0 +1,11 @@
+# question @@ gold SQL   (extend with your own questions; for the paper also adapt Spider / WikiSQL items)
+show all customers @@ SELECT * FROM customers
+how many orders @@ SELECT COUNT(*) FROM orders
+list products @@ SELECT * FROM products
+top 3 products by price @@ SELECT * FROM products ORDER BY price DESC LIMIT 3
+which customers live in Indore @@ SELECT * FROM customers WHERE city = 'Indore'
+total revenue from delivered orders @@ SELECT SUM(total) FROM orders WHERE status = 'DELIVERED'
+number of orders per customer name @@ SELECT c.name, COUNT(o.id) FROM customers c JOIN orders o ON o.customer_id = c.id GROUP BY c.name
+average product price per category @@ SELECT category, AVG(price) FROM products GROUP BY category
+customers who have never cancelled an order @@ SELECT * FROM customers WHERE id NOT IN (SELECT customer_id FROM orders WHERE status = 'CANCELLED')
+name of the customer with the highest total spending on delivered orders @@ SELECT c.name FROM customers c JOIN orders o ON o.customer_id = c.id WHERE o.status = 'DELIVERED' GROUP BY c.id, c.name ORDER BY SUM(o.total) DESC LIMIT 1

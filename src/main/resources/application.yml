@@ -1,0 +1,66 @@
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 20m
+      cookie:
+        http-only: true
+        secure: ${COOKIE_SECURE:false}   # set true behind HTTPS
+        same-site: strict
+  error:
+    include-stacktrace: never
+    include-message: never
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update          # use Flyway/Liquibase for production
+    properties:
+      hibernate.format_sql: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+# Application database (Hibernate/JPA): users, query history, audit
+app:
+  datasource:
+    jdbc-url: ${APP_DB_URL:jdbc:mysql://localhost:3306/lexiquery_app?useSSL=false&allowPublicKeyRetrieval=true}
+    username: ${APP_DB_USER:lexiquery_app}
+    password: ${APP_DB_PASSWORD:app_pass_change_me}
+  bootstrap:
+    admin-username: ${APP_ADMIN_USER:admin}
+    admin-password: ${APP_ADMIN_PASSWORD:}   # blank => random password printed once at first start
+
+lexiquery:
+  target:                                     # database users query (READ-ONLY account)
+    url: ${TARGET_DB_URL:jdbc:mysql://localhost:3306/lexiquery_target?useSSL=false&allowPublicKeyRetrieval=true}
+    username: ${TARGET_DB_USER:lexiquery_ro}
+    password: ${TARGET_DB_PASSWORD:ro_pass_change_me}
+    schema: ${TARGET_DB_SCHEMA:lexiquery_target}
+  ml:
+    enabled: ${ML_ENABLED:true}
+    base-url: ${ML_URL:http://localhost:8000}
+    injection-threshold: 0.80
+  llm:
+    enabled: ${LLM_ENABLED:true}
+    # provider: openai = any OpenAI-compatible API (default: Groq free tier); anthropic = Anthropic API
+    provider: ${LLM_PROVIDER:openai}
+    base-url: ${LLM_BASE_URL:https://api.groq.com/openai/v1}
+    api-key: ${LLM_API_KEY:${ANTHROPIC_API_KEY:}}
+    model: ${LLM_MODEL:openai/gpt-oss-120b}
+    max-tokens: ${LLM_MAX_TOKENS:2000}
+  limits:
+    max-rows: 200
+    timeout-seconds: 10
+    requests-per-minute: 20
+    max-retries: 2
+  policy:
+    viewer-tables: customers,products

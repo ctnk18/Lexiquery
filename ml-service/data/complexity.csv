@@ -1,0 +1,31 @@
+question,label
+show all customers,SIMPLE
+list products,SIMPLE
+how many orders,SIMPLE
+count customers,SIMPLE
+display all orders,SIMPLE
+top 5 products by price,SIMPLE
+show customers from Indore,SIMPLE
+get all categories,SIMPLE
+list orders with status delivered,SIMPLE
+what is the price of the laptop,SIMPLE
+average product price per category,MEDIUM
+number of orders per customer,MEDIUM
+total revenue by month,MEDIUM
+customers and their order totals,MEDIUM
+orders placed in 2024 with customer names,MEDIUM
+products ordered more than 3 times,MEDIUM
+total sales per city,MEDIUM
+list customers with more than two orders,MEDIUM
+sum of quantity sold per product,MEDIUM
+count of orders by status,MEDIUM
+customers who have never placed an order,COMPLEX
+name of the customer with the highest total spending,COMPLEX
+products that were bought by every customer,COMPLEX
+month over month revenue growth,COMPLEX
+customers whose average order value is above the overall average,COMPLEX
+second most expensive product in each category,COMPLEX
+cities where all customers have at least one delivered order,COMPLEX
+top 3 customers per city by total spending,COMPLEX
+products never ordered together with headphones,COMPLEX
+running total of revenue ordered by date,COMPLEX
