@@ -23,13 +23,13 @@ public class QueryController {
     @GetMapping("/query")
     public String page(Model model) {
         model.addAttribute("strategies", Strategy.values());
-        model.addAttribute("selected", Strategy.HYBRID);
+        model.addAttribute("selected", Strategy.RULE);
         return "query";
     }
 
     @PostMapping("/query")
     public String run(@RequestParam String question,
-                      @RequestParam(defaultValue = "HYBRID") Strategy strategy,
+                      @RequestParam(defaultValue = "RULE") Strategy strategy,
                       Authentication auth, Model model) {
         String q = question == null ? "" : question.trim();
         model.addAttribute("strategies", Strategy.values());
