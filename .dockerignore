@@ -1,0 +1,8 @@
+target/
+.idea/
+.git/
+.github/
+.run/
+ml-service/
+docs/
+*.iml
