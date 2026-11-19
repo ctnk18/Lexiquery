@@ -6,6 +6,7 @@
 
 ## Why this project
 Most natural-language-to-SQL demos execute whatever the model returns. This project treats **the model's output as untrusted input** and combines AI, ML and security engineering in one system, with a research harness to compare approaches.
+**Live demo:** https://lexiquery-production.up.railway.app (login details are shared on request; the demo may be offline when hosting credit runs out. Local setup steps are below.)
 
 ## Architecture
 
